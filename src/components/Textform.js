@@ -62,8 +62,9 @@ const Textform = (props) => {
 
   <div className="container my-3" styel={{color:props.mode==="dark"?"white":"black"}}>
   </div><h2>Your Text Summary:</h2>
-   <p > <b>{text.split(" ").length-1}</b> Words and <b>{text.length}</b>Characters </p>
-   <p><b>{0.008*text.split(" ").length-1}</b> Minutes Read</p>
+   <p>{text.split(" ").filter(word => word.trim() !== "").length} words, {text.length} characters</p>
+   <p><b>{(0.008 * text.split(" ").filter(word => word.trim() !== "").length).toFixed(2)}</b> minutes read</p>
+
    <h2> Preview:</h2>
     <p>{text.length>0?text:"Please Write Something To Show In Preview"}</p>
 
