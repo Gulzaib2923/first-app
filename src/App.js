@@ -1,6 +1,6 @@
 
 import './App.css';
-// import { BrowserRouter as Router,Routes,Route } from "react-router-dom";
+import { BrowserRouter as Router,Routes,Route } from "react-router-dom";
 
 import Navbar from './components/Navbar';
 import Textform from './components/Textform';
@@ -21,37 +21,61 @@ function App() {
 }
 
   const[ mode, setmode]=useState("light")
+  
    const togglemode=()=>{
     if(mode==="light"){
       setmode("dark");
       document.body.style.backgroundColor= "rgb(4, 39, 67)";
       showalert("Dark mode is Enabled","Success")
-      document.title="Textuttils-Dark"
+      
     }
     else{
       setmode("light");
       document.body.style.backgroundColor='white';
        showalert("Light mode is Enabled","Success")
-             document.title="Textuttils-Light"
+            
 
     }
   }
+  // const pallete=()=>{
+  //   document.body.classList.remove('bg-primary')
+  //   document.body.classList.remove('bg-dange')
+  //   document.body.classList.remove('bg-success')
+  //   document.body.classList.remove('bg-secondary')
+  //   document.body.classList.remove('bg-dark')
+  //   document.body.classList.remove('bg-light')
+  // }
+  //   const togglemode=(cls)=>{
+  //     pallete();
+  //     document.body.classList.add('bg-'+cls)
+  //   if(mode==="light"){
+  //     setmode("dark");
+      
+  //     showalert("Dark mode is Enabled","Success")
+      
+  //   }
+  //   else{
+  //     setmode("light");
+  //     document.body.style.backgroundColor='white';
+  //      showalert("Light mode is Enabled","Success")
+             
+
+  //   }
+  // }
   return (
     <>
-   {/* <Router> */}
+    <Router> 
 <Navbar  toggleMode={togglemode}  mode= {mode}/>
  <Alert alert={alert}/>
  <div className= "container my-3" >
-  {/* <Routes> */}
-  {/* <Route path='/' element={ */}
-    <Textform  showalert={showalert} heading="Enter the text to Analyze( Word Counter)" mode= {mode}/>
-{/* }/> */}
-  {/* <Route path='/About' element={ */}
-    <Dark />
-    {/*  }/> */}
-  {/* </Routes> */}
+    <Routes> 
+    <Route path='/' element={<Textform  showalert={showalert} heading="Word Counter  With First Letter UpperCase" mode= {mode}/>
+}/>
+
+   <Route path='/About' element={<Dark  mode= {mode}/>}/>
+   </Routes> 
  </div>
- {/* </Router> */}
+ </Router>
 </>
   );}
 
